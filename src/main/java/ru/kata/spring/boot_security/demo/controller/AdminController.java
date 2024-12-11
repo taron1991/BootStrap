@@ -40,8 +40,8 @@ public class AdminController {
     @GetMapping("")
     public String getUsers(Model model) {
         List<User> users = userService.listUsers();
-        model.addAttribute("users", users);
-        return "users";
+        model.addAttribute("listOfUsers", users);
+        return "bootstrap/users";
     }
 
     @GetMapping("/edit")
@@ -81,10 +81,10 @@ public class AdminController {
 
     @GetMapping("/new")
     public String newUserForm(Model model) {
-        model.addAttribute(new User());
+        model.addAttribute("user",new User());
         List<Role> roles = roleService.getRolesList();
         model.addAttribute("allRoles", roles);
-        return "create";
+        return "bootstrap/create";
     }
 
     @GetMapping("/delete")
